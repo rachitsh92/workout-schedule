@@ -1,11 +1,1264 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>14-Day Fat Loss Plan</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #f9f8f5;
+            --bg2: #ffffff;
+            --bg3: #f1efe8;
+            --text: #1a1a18;
+            --text2: #5f5e5a;
+            --text3: #888780;
+            --border: rgba(0, 0, 0, 0.12);
+            --border2: rgba(0, 0, 0, 0.22);
+            --radius: 8px;
+            --radius-lg: 12px;
+            --c-cardio: #1D9E75;
+            --c-strength: #534AB7;
+            --c-abs: #D85A30;
+            --c-rest: #D3D1C7;
+            --c-active: #BA7517;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1a1a18;
+                --bg2: #242422;
+                --bg3: #2c2c2a;
+                --text: #e8e6de;
+                --text2: #b4b2a9;
+                --text3: #888780;
+                --border: rgba(255, 255, 255, 0.1);
+                --border2: rgba(255, 255, 255, 0.2);
+            }
+
+            .bh-cardio {
+                background: #04342C !important;
+                color: #9FE1CB !important;
+            }
+
+            .bh-strength {
+                background: #26215C !important;
+                color: #CECBF6 !important;
+            }
+
+            .bh-abs {
+                background: #4A1B0C !important;
+                color: #F0997B !important;
+            }
+
+            .bh-rest {
+                background: #2C2C2A !important;
+                color: #D3D1C7 !important;
+            }
+
+            .bh-active {
+                background: #412402 !important;
+                color: #FAC775 !important;
+            }
+
+            .chip-g {
+                background: #04342C !important;
+                color: #9FE1CB !important;
+            }
+
+            .chip-p {
+                background: #26215C !important;
+                color: #CECBF6 !important;
+            }
+
+            .chip-o {
+                background: #412402 !important;
+                color: #FAC775 !important;
+            }
+
+            .tag-cardio {
+                background: #04342C !important;
+                color: #9FE1CB !important;
+            }
+
+            .progress-bar-fill {
+                background: #1D9E75 !important;
+            }
+
+            .hero-stat {
+                background: #26215C !important;
+            }
+
+            .hero-stat .val {
+                color: #CECBF6 !important;
+            }
+
+            .week-label {
+                color: #9FE1CB !important;
+            }
+
+            .if-icon {
+                background: #04342C !important;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+
+        /* ── Header ── */
+        header {
+            background: var(--bg2);
+            border-bottom: 0.5px solid var(--border);
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--c-cardio);
+            border-radius: 50%;
+        }
+
+        .header-meta {
+            font-size: 12px;
+            color: var(--text3);
+        }
+
+        /* ── Layout ── */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: var(--bg2);
+            border: 0.5px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.25rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .hero-left h1 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .hero-left p {
+            font-size: 13px;
+            color: var(--text2);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 8px;
+        }
+
+        .hero-stat {
+            background: #EEEDFE;
+            border-radius: var(--radius);
+            padding: 8px 14px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .hero-stat .val {
+            font-size: 18px;
+            font-weight: 600;
+            color: #534AB7;
+            display: block;
+        }
+
+        .hero-stat .lbl {
+            font-size: 10px;
+            color: var(--text3);
+            margin-top: 2px;
+            display: block;
+        }
+
+        /* ── IF Bar ── */
+        .if-bar {
+            background: var(--bg2);
+            border: 0.5px solid var(--border);
+            border-radius: var(--radius);
+            padding: 11px 14px;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .if-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #E1F5EE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .if-text {
+            font-size: 13px;
+            color: var(--text2);
+            line-height: 1.5;
+        }
+
+        .if-text strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* ── Legend ── */
+        .legend {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .leg-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            color: var(--text3);
+        }
+
+        .leg-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ── Week Tabs ── */
+        .week-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 1.25rem;
+        }
+
+        .wtab {
+            flex: 1;
+            padding: 10px 16px;
+            border: 0.5px solid var(--border);
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text2);
+            background: var(--bg3);
+            text-align: center;
+            transition: all .2s;
+            user-select: none;
+        }
+
+        .wtab.active {
+            background: var(--bg2);
+            color: var(--text);
+            border-color: var(--border2);
+        }
+
+        .wtab:hover:not(.active) {
+            background: var(--bg2);
+        }
+
+        /* ── Day Grid ── */
+        .day-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 10px;
+            margin-bottom: 1.25rem;
+        }
+
+        /* ── Day Card ── */
+        .day-card {
+            border: 0.5px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 14px 12px;
+            background: var(--bg2);
+        }
+
+        .day-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .day-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        /* ── Timer Bar ── */
+        .timer-bar {
+            display: flex;
+            height: 5px;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 8px 0 3px;
+            gap: 1px;
+        }
+
+        .t-cardio {
+            background: var(--c-cardio);
+        }
+
+        .t-strength {
+            background: var(--c-strength);
+        }
+
+        .t-abs {
+            background: var(--c-abs);
+            flex: 0 0 12%;
+        }
+
+        .t-rest {
+            background: var(--c-rest);
+        }
+
+        .timer-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            color: var(--text3);
+            margin-bottom: 8px;
+        }
+
+        /* ── Block Headers ── */
+        .block-head {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            margin: 9px 0 5px;
+            padding: 2px 7px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .bh-cardio {
+            background: #E1F5EE;
+            color: #0F6E56;
+        }
+
+        .bh-strength {
+            background: #EEEDFE;
+            color: #3C3489;
+        }
+
+        .bh-abs {
+            background: #FAECE7;
+            color: #993C1D;
+        }
+
+        .bh-rest {
+            background: #F1EFE8;
+            color: #5F5E5A;
+        }
+
+        .bh-active {
+            background: #FAEEDA;
+            color: #633806;
+        }
+
+        /* ── Machine Chips ── */
+        .machine-row {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+
+        .chip {
+            font-size: 10px;
+            padding: 2px 7px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .chip-g {
+            background: #E1F5EE;
+            color: #0F6E56;
+        }
+
+        .chip-p {
+            background: #EEEDFE;
+            color: #3C3489;
+        }
+
+        .chip-o {
+            background: #FAEEDA;
+            color: #633806;
+        }
+
+        /* ── Exercise List ── */
+        .ex-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .ex-list li {
+            font-size: 11px;
+            color: var(--text2);
+            padding: 4px 0;
+            border-bottom: 0.5px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .ex-list li:last-child {
+            border-bottom: none;
+        }
+
+        .ex-detail {
+            font-size: 10px;
+            color: var(--text3);
+            white-space: nowrap;
+        }
+
+        /* ── Week Stats ── */
+        .week-stats {
+            background: var(--bg2);
+            border: 0.5px solid var(--border);
+            border-radius: var(--radius);
+            padding: 12px 14px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            text-align: center;
+        }
+
+        .week-stats .stat-val {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .week-stats .stat-lbl {
+            font-size: 10px;
+            color: var(--text3);
+            margin-top: 2px;
+        }
+
+        /* ── Abs Reference ── */
+        .abs-reference {
+            border: 0.5px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 1.25rem;
+        }
+
+        .abs-reference-head {
+            padding: 10px 14px;
+            background: var(--bg3);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text);
+            border-bottom: 0.5px solid var(--border);
+        }
+
+        .abs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            padding: 0;
+        }
+
+        .abs-item {
+            font-size: 11px;
+            color: var(--text2);
+            padding: 8px 14px;
+            border-bottom: 0.5px solid var(--border);
+            border-right: 0.5px solid var(--border);
+        }
+
+        .abs-item:nth-child(even) {
+            border-right: none;
+        }
+
+        .abs-item:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        /* ── Key Rules ── */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            padding: 12px 14px;
+            background: var(--bg2);
+        }
+
+        .rule-item {
+            font-size: 12px;
+            color: var(--text2);
+            padding: 6px 0;
+            border-bottom: 0.5px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .rule-item:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        /* ── Week Panel ── */
+        .week-panel {
+            display: none;
+        }
+
+        .week-panel.active {
+            display: block;
+        }
+
+        /* ── Progress Bar (end of page) ── */
+        .progress-section {
+            background: var(--bg2);
+            border: 0.5px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.25rem;
+        }
+
+        .progress-section h2 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .day-dots {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .day-dot {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 0.5px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text3);
+            background: var(--bg3);
+            cursor: pointer;
+            transition: all .15s;
+            user-select: none;
+        }
+
+        .day-dot.done {
+            background: var(--c-cardio);
+            color: #fff;
+            border-color: var(--c-cardio);
+        }
+
+        .day-dot.rest {
+            background: var(--bg3);
+            border-style: dashed;
+        }
+
+        .progress-bar-wrap {
+            height: 6px;
+            background: var(--bg3);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--c-cardio);
+            border-radius: 3px;
+            transition: width .4s ease;
+        }
+
+        .progress-meta {
+            font-size: 12px;
+            color: var(--text3);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 12px;
+            color: var(--text3);
+            border-top: 0.5px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .day-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+            }
+
+            .week-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .abs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .abs-item {
+                border-right: none !important;
+            }
+
+            .rule-item {
+                border-bottom: 0.5px solid var(--border) !important;
+            }
+
+            .rule-item:last-child {
+                border-bottom: none !important;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello, World!</h1>
+
+    <header>
+        <div class="logo">
+            <div class="logo-dot"></div> 14-Day Fat Loss Plan
+        </div>
+        <div class="header-meta">Week 1 + Week 2 · IF 6 PM–8 AM</div>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-left">
+                <h1>2-Week Cut — Target: −3 kg</h1>
+                <p>Starting weight: 113 kg &nbsp;·&nbsp; 9 kg already lost &nbsp;·&nbsp; Max 40–45 min sessions
+                    &nbsp;·&nbsp; IF 14:10</p>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="val">6</span>
+                    <span class="lbl">Days/week</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="val">~42</span>
+                    <span class="lbl">Avg mins</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="val">−3 kg</span>
+                    <span class="lbl">Goal</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- IF Bar -->
+        <div class="if-bar">
+            <div class="if-icon">⏱</div>
+            <div class="if-text">
+                <strong>Intermittent Fasting — 14:10 window</strong><br>
+                Fast: 6:00 PM → 8:00 AM &nbsp;|&nbsp; Eating window: 8 AM–6 PM &nbsp;|&nbsp; Break fast with protein
+                first — eggs, paneer, or Greek yoghurt
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <span class="leg-item"><span class="leg-dot" style="background:#1D9E75"></span>Cardio block</span>
+            <span class="leg-item"><span class="leg-dot" style="background:#534AB7"></span>Strength block</span>
+            <span class="leg-item"><span class="leg-dot" style="background:#D85A30"></span>Abs finisher (5 min)</span>
+            <span class="leg-item"><span class="leg-dot" style="background:#D3D1C7"></span>Rest / recovery</span>
+        </div>
+
+        <!-- Week Tabs -->
+        <div class="week-tabs">
+            <div class="wtab active" onclick="switchWeek(1)">Week 1 — Build</div>
+            <div class="wtab" onclick="switchWeek(2)">Week 2 — Progress</div>
+        </div>
+
+        <!-- ══ WEEK 1 ══ -->
+        <div id="w1" class="week-panel active">
+            <div class="day-grid">
+
+                <!-- Mon -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#1D9E75">Mon · Day 1</div>
+                    <div class="day-name">Chest + Cardio</div>
+                    <div class="timer-bar">
+                        <div class="t-cardio" style="flex:2.0"></div>
+                        <div class="t-strength" style="flex:1.5"></div>
+                        <div class="t-abs"></div>
+                        <div class="t-rest" style="flex:0.3"></div>
+                    </div>
+                    <div class="timer-labels"><span>0</span><span>~42 min</span></div>
+                    <div class="block-head bh-cardio">Cardio · 20 min</div>
+                    <div class="machine-row">
+                        <span class="chip chip-g">Incline walk 10 min</span>
+                        <span class="chip chip-p">Cycling 10 min</span>
+                    </div>
+                    <div class="block-head bh-strength">Strength · 17 min</div>
+                    <ul class="ex-list">
+                        <li>Chest press <span class="ex-detail">3×15 · 8 kg</span></li>
+                        <li>Chest fly <span class="ex-detail">3×15 · 7 kg</span></li>
+                        <li>Push-ups <span class="ex-detail">3×10 · BW</span></li>
+                    </ul>
+                    <div class="block-head bh-abs">Abs · 5 min</div>
+                    <ul class="ex-list">
+                        <li>Plank <span class="ex-detail">1×45 s</span></li>
+                        <li>Crunches <span class="ex-detail">2×20</span></li>
+                        <li>Leg raises <span class="ex-detail">2×12</span></li>
+                    </ul>
+                </div>
+
+                <!-- Tue -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#534AB7">Tue · Day 2</div>
+                    <div class="day-name">Legs + Cardio</div>
+                    <div class="timer-bar">
+                        <div class="t-cardio" style="flex:2.0"></div>
+                        <div class="t-strength" style="flex:1.5"></div>
+                        <div class="t-abs"></div>
+                        <div class="t-rest" style="flex:0.3"></div>
+                    </div>
+                    <div class="timer-labels"><span>0</span><span>~41 min</span></div>
+                    <div class="block-head bh-cardio">Cardio · 20 min</div>
+                    <div class="machine-row">
+                        <span class="chip chip-o">Cross trainer 10 min</span>
+                        <span class="chip chip-g">Incline walk 10 min</span>
+                    </div>
+                    <div class="block-head bh-strength">Strength · 16 min</div>
+                    <ul class="ex-list">
+                        <li>BW Squats <span class="ex-detail">3×20 · bodyweight</span></li>
+                        <li>Glute bridges <span class="ex-detail">3×15 · BW</span></li>
+                        <li>Leg extension <span class="ex-detail">3×15 · 7 kg</span></li>
+                        <li>Calf raises <span class="ex-detail">3×20 · BW</span></li>
+                    </ul>
+                    <div class="block-head bh-abs">Abs · 5 min</div>
+                    <ul class="ex-list">
+                        <li>Plank <span class="ex-detail">1×45 s</span></li>
+                        <li>Russian twist <span class="ex-detail">2×20</span></li>
+                        <li>Leg raises <span class="ex-detail">2×12</span></li>
+                    </ul>
+                </div>
+
+                <!-- Wed -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#BA7517">Wed · Day 3</div>
+                    <div class="day-name">Active Recovery</div>
+                    <div class="timer-bar">
+                        <div class="t-cardio" style="flex:3.5"></div>
+                        <div class="t-rest" style="flex:0.2"></div>
+                    </div>
+                    <div class="timer-labels"><span>0</span><span>~35 min</span></div>
+                    <div class="block-head bh-active">Movement · 35 min</div>
+                    <ul class="ex-list">
+                        <li>Incline walk (low pace) <span class="ex-detail">20 min</span></li>
+                        <li>Full body stretch <span class="ex-detail">10 min</span></li>
+                        <li>Hip flexor hold <span class="ex-detail">3×30 s each</span></li>
+                        <li>Deep breathing <span class="ex-detail">5 min</span></li>
+                    </ul>
+                </div>
+
+                <!-- Thu -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#1D9E75">Thu · Day 4</div>
+                    <div class="day-name">Shoulders + Arms</div>
+                    <div class="timer-bar">
+                        <div class="t-cardio" style="flex:2.0"></div>
+                        <div class="t-strength" style="flex:1.5"></div>
+                        <div class="t-abs"></div>
+                        <div class="t-rest" style="flex:0.3"></div>
+                    </div>
+                    <div class="timer-labels"><span>0</span><span>~42 min</span></div>
+                    <div class="block-head bh-cardio">Cardio · 20 min</div>
+                    <div class="machine-row">
+                        <span class="chip chip-p">Cycling 10 min</span>
+                        <span class="chip chip-o">Cross trainer 10 min</span>
+                    </div>
+                    <div class="block-head bh-strength">Strength · 17 min</div>
+                    <ul class="ex-list">
+                        <li>Shoulder press <span class="ex-detail">3×15 · 7 kg</span></li>
+                        <li>Bicep curls <span class="ex-detail">3×15 · 8 kg</span></li>
+                        <li>Tricep extension <span class="ex-detail">3×15 · 7 kg</span></li>
+                        <li>Lateral raises <span class="ex-detail">3×12 · 5 kg</span></li>
+                    </ul>
+                    <div class="block-head bh-abs">Abs · 5 min</div>
+                    <ul class="ex-list">
+                        <li>Mountain climbers <span class="ex-detail">2×20</span></li>
+                        <li>Crunches <span class="ex-detail">2×20</span></li>
+                        <li>Plank <span class="ex-detail">1×45 s</span></li>
+                    </ul>
+                </div>
+
+                <!-- Fri -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#534AB7">Fri · Day 5</div>
+                    <div class="day-name">Full Body</div>
+                    <div class="timer-bar">
+                        <div class="t-cardio" style="flex:2.0"></div>
+                        <div class="t-strength" style="flex:1.5"></div>
+                        <div class="t-abs"></div>
+                        <div class="t-rest" style="flex:0.3"></div>
+                    </div>
+                    <div class="timer-labels"><span>0</span><span>~43 min</span></div>
+                    <div class="block-head bh-cardio">Cardio · 20 min</div>
+                    <div class="machine-row">
+                        <span class="chip chip-g">Incline walk 10 min</span>
+                        <span class="chip chip-p">Cycling 10 min</span>
+                    </div>
+                    <div class="block-head bh-strength">Strength · 18 min</div>
+                    <ul class="ex-list">
+                        <li>BW Squats <span class="ex-detail">3×20 · bodyweight</span></li>
+                        <li>Chest press <span class="ex-detail">3×15 · 8 kg</span></li>
+                        <li>Seated row <span class="ex-detail">3×15 · 8 kg</span></li>
+                    </ul>
+                    <div class="block-head bh-abs">Abs · 5 min</div>
+                    <ul class="ex-list">
+                        <li>Plank <span class="ex-detail">1×45 s</span></li>
+                        <li>Russian twist <span class="ex-detail">2×20</span></li>
+                        <li>Bicycle crunches <span class="ex-detail">2×15</span></li>
+                    </ul>
+                </div>
+
+                <!-- Sat -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#1D9E75">Sat · Day 6</div>
+                    <div class="day-name">Cardio + Core</div>
+                    <div class="timer-bar">
+                        <div class="t-cardio" style="flex:3.0"></div>
+                        <div class="t-abs" style="flex:0.8"></div>
+                        <div class="t-rest" style="flex:0.3"></div>
+                    </div>
+                    <div class="timer-labels"><span>0</span><span>~40 min</span></div>
+                    <div class="block-head bh-cardio">Cardio · 30 min</div>
+                    <div class="machine-row">
+                        <span class="chip chip-o">Cross trainer 10 min</span>
+                        <span class="chip chip-g">Incline walk 10 min</span>
+                        <span class="chip chip-p">Cycling 10 min</span>
+                    </div>
+                    <div class="block-head bh-abs">Core · 10 min</div>
+                    <ul class="ex-list">
+                        <li>Plank <span class="ex-detail">3×45 s</span></li>
+                        <li>Crunches <span class="ex-detail">3×20</span></li>
+                        <li>Leg raises <span class="ex-detail">3×15</span></li>
+                        <li>Russian twist <span class="ex-detail">3×20</span></li>
+                    </ul>
+                </div>
+
+                <!-- Sun -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#888780">Sun · Day 7</div>
+                    <div class="day-name">Full Rest</div>
+                    <div class="timer-bar">
+                        <div class="t-rest" style="flex:4"></div>
+                    </div>
+                    <div class="timer-labels"><span>Rest &amp; recover</span></div>
+                    <div class="block-head bh-rest">Recovery</div>
+                    <ul class="ex-list">
+                        <li>Sleep 8 hrs <span class="ex-detail">priority</span></li>
+                        <li>3–4 L water <span class="ex-detail">all day</span></li>
+                        <li>Light walk optional <span class="ex-detail">20 min</span></li>
+                        <li>Meal prep for week</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="week-stats">
+                <div>
+                    <div class="stat-val">6</div>
+                    <div class="stat-lbl">Active days</div>
+                </div>
+                <div>
+                    <div class="stat-val">~42</div>
+                    <div class="stat-lbl">Avg mins/session</div>
+                </div>
+                <div>
+                    <div class="stat-val">3×10</div>
+                    <div class="stat-lbl">Cardio machines rotated</div>
+                </div>
+                <div>
+                    <div class="stat-val">−1.5 kg</div>
+                    <div class="stat-lbl">Target Week 1</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ WEEK 2 ══ -->
+        <div id="w2" class="week-panel">
+            <div class="day-grid">
+
+                <!-- Mon -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#1D9E75">Mon · Day 8</div>
+                    <div class="day-name">Chest + Cardio ↑</div>
+                    <div class="timer-bar">
+                        <div class="t-cardio" style="flex:2.2"></div>
+                        <div class="t-strength" style="flex:1.6"></div>
+                        <div class="t-abs"></div>
+                        <div class="t-rest" style="flex:0.3"></div>
+                    </div>
+                    <div class="timer-labels"><span>0</span><span>~44 min</span></div>
+                    <div class="block-head bh-cardio">Cardio · 22 min</div>
+                    <div class="machine-row">
+                        <span class="chip chip-g">Incline walk 12 min</span>
+                        <span class="chip chip-p">Cycling 10 min</span>
+                    </div>
+                    <div class="block-head bh-strength">Strength · 17 min</div>
+                    <ul class="ex-list">
+                        <li>Chest press <span class="ex-detail">4×15 · 9 kg</span></li>
+                        <li>Chest fly <span class="ex-detail">3×15 · 8 kg</span></li>
+                        <li>Push-ups <span class="ex-detail">3×12 · BW</span></li>
+                    </ul>
+                    <div class="block-head bh-abs">Abs · 5 min</div>
+                    <ul class="ex-list">
+                        <li>Plank <span class="ex-detail">2×45 s</span></li>
+                        <li>Crunches <span class="ex-detail">2×20</span></li>
+                        <li>Leg raises <span class="ex-detail">1×15</span></li>
+                    </ul>
+                </div>
+
+                <!-- Tue -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#534AB7">Tue · Day 9</div>
+                    <div class="day-name">Legs + Cardio ↑</div>
+                    <div class="timer-bar">
+                        <div class="t-cardio" style="flex:2.2"></div>
+                        <div class="t-strength" style="flex:1.6"></div>
+                        <div class="t-abs"></div>
+                        <div class="t-rest" style="flex:0.3"></div>
+                    </div>
+                    <div class="timer-labels"><span>0</span><span>~43 min</span></div>
+                    <div class="block-head bh-cardio">Cardio · 22 min</div>
+                    <div class="machine-row">
+                        <span class="chip chip-o">Cross trainer 12 min</span>
+                        <span class="chip chip-g">Incline walk 10 min</span>
+                    </div>
+                    <div class="block-head bh-strength">Strength · 16 min</div>
+                    <ul class="ex-list">
+                        <li>BW Squats <span class="ex-detail">4×20 · bodyweight</span></li>
+                        <li>Glute bridges <span class="ex-detail">4×15 · BW</span></li>
+                        <li>Leg extension <span class="ex-detail">3×15 · 8 kg</span></li>
+                        <li>Calf raises <span class="ex-detail">4×20 · BW</span></li>
+                    </ul>
+                    <div class="block-head bh-abs">Abs · 5 min</div>
+                    <ul class="ex-list">
+                        <li>Plank <span class="ex-detail">2×45 s</span></li>
+                        <li>Russian twist <span class="ex-detail">2×20</span></li>
+                        <li>Leg raises <span class="ex-detail">1×15</span></li>
+                    </ul>
+                </div>
+
+                <!-- Wed -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#BA7517">Wed · Day 10</div>
+                    <div class="day-name">Active Recovery</div>
+                    <div class="timer-bar">
+                        <div class="t-cardio" style="flex:3.5"></div>
+                        <div class="t-rest" style="flex:0.2"></div>
+                    </div>
+                    <div class="timer-labels"><span>0</span><span>~35 min</span></div>
+                    <div class="block-head bh-active">Movement · 35 min</div>
+                    <ul class="ex-list">
+                        <li>Incline walk (low pace) <span class="ex-detail">20 min</span></li>
+                        <li>Full body stretch <span class="ex-detail">10 min</span></li>
+                        <li>Foam roll / mobility <span class="ex-detail">5 min</span></li>
+                    </ul>
+                </div>
+
+                <!-- Thu -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#1D9E75">Thu · Day 11</div>
+                    <div class="day-name">Shoulders + Arms ↑</div>
+                    <div class="timer-bar">
+                        <div class="t-cardio" style="flex:2.2"></div>
+                        <div class="t-strength" style="flex:1.6"></div>
+                        <div class="t-abs"></div>
+                        <div class="t-rest" style="flex:0.3"></div>
+                    </div>
+                    <div class="timer-labels"><span>0</span><span>~44 min</span></div>
+                    <div class="block-head bh-cardio">Cardio · 22 min</div>
+                    <div class="machine-row">
+                        <span class="chip chip-p">Cycling 12 min</span>
+                        <span class="chip chip-o">Cross trainer 10 min</span>
+                    </div>
+                    <div class="block-head bh-strength">Strength · 17 min</div>
+                    <ul class="ex-list">
+                        <li>Shoulder press <span class="ex-detail">4×15 · 8 kg</span></li>
+                        <li>Bicep curls <span class="ex-detail">3×15 · 9 kg</span></li>
+                        <li>Tricep extension <span class="ex-detail">3×15 · 8 kg</span></li>
+                        <li>Lateral raises <span class="ex-detail">3×15 · 6 kg</span></li>
+                    </ul>
+                    <div class="block-head bh-abs">Abs · 5 min</div>
+                    <ul class="ex-list">
+                        <li>Mountain climbers <span class="ex-detail">2×25</span></li>
+                        <li>Crunches <span class="ex-detail">2×20</span></li>
+                        <li>Plank <span class="ex-detail">1×60 s</span></li>
+                    </ul>
+                </div>
+
+                <!-- Fri -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#534AB7">Fri · Day 12</div>
+                    <div class="day-name">Full Body ↑</div>
+                    <div class="timer-bar">
+                        <div class="t-cardio" style="flex:2.2"></div>
+                        <div class="t-strength" style="flex:1.6"></div>
+                        <div class="t-abs"></div>
+                        <div class="t-rest" style="flex:0.3"></div>
+                    </div>
+                    <div class="timer-labels"><span>0</span><span>~44 min</span></div>
+                    <div class="block-head bh-cardio">Cardio · 22 min</div>
+                    <div class="machine-row">
+                        <span class="chip chip-g">Incline walk 12 min</span>
+                        <span class="chip chip-p">Cycling 10 min</span>
+                    </div>
+                    <div class="block-head bh-strength">Strength · 17 min</div>
+                    <ul class="ex-list">
+                        <li>BW Squats <span class="ex-detail">4×20 · bodyweight</span></li>
+                        <li>Chest press <span class="ex-detail">4×15 · 9 kg</span></li>
+                        <li>Seated row <span class="ex-detail">3×15 · 9 kg</span></li>
+                    </ul>
+                    <div class="block-head bh-abs">Abs · 5 min</div>
+                    <ul class="ex-list">
+                        <li>Plank <span class="ex-detail">2×60 s</span></li>
+                        <li>Bicycle crunches <span class="ex-detail">2×20</span></li>
+                        <li>Russian twist <span class="ex-detail">1×25</span></li>
+                    </ul>
+                </div>
+
+                <!-- Sat -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#1D9E75">Sat · Day 13</div>
+                    <div class="day-name">Cardio + Core ↑</div>
+                    <div class="timer-bar">
+                        <div class="t-cardio" style="flex:3.2"></div>
+                        <div class="t-abs" style="flex:0.9"></div>
+                        <div class="t-rest" style="flex:0.3"></div>
+                    </div>
+                    <div class="timer-labels"><span>0</span><span>~45 min</span></div>
+                    <div class="block-head bh-cardio">Cardio · 33 min</div>
+                    <div class="machine-row">
+                        <span class="chip chip-o">Cross trainer 11 min</span>
+                        <span class="chip chip-g">Incline walk 11 min</span>
+                        <span class="chip chip-p">Cycling 11 min</span>
+                    </div>
+                    <div class="block-head bh-abs">Core · 12 min</div>
+                    <ul class="ex-list">
+                        <li>Plank <span class="ex-detail">3×60 s</span></li>
+                        <li>Crunches <span class="ex-detail">3×20</span></li>
+                        <li>Leg raises <span class="ex-detail">3×15</span></li>
+                        <li>Russian twist <span class="ex-detail">3×25</span></li>
+                    </ul>
+                </div>
+
+                <!-- Sun -->
+                <div class="day-card">
+                    <div class="day-label" style="color:#888780">Sun · Day 14</div>
+                    <div class="day-name">Full Rest</div>
+                    <div class="timer-bar">
+                        <div class="t-rest" style="flex:4"></div>
+                    </div>
+                    <div class="timer-labels"><span>Rest &amp; recover</span></div>
+                    <div class="block-head bh-rest">Day 14 actions</div>
+                    <ul class="ex-list">
+                        <li>Morning weigh-in <span class="ex-detail">fasted</span></li>
+                        <li>Track 14-day delta</li>
+                        <li>Sleep 8 hrs</li>
+                        <li>Plan Week 3</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="week-stats">
+                <div>
+                    <div class="stat-val">6</div>
+                    <div class="stat-lbl">Active days</div>
+                </div>
+                <div>
+                    <div class="stat-val">~44</div>
+                    <div class="stat-lbl">Avg mins/session</div>
+                </div>
+                <div>
+                    <div class="stat-val">+2 min</div>
+                    <div class="stat-lbl">Cardio progression</div>
+                </div>
+                <div>
+                    <div class="stat-val">−1.5 kg</div>
+                    <div class="stat-lbl">Target Week 2</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Abs Reference -->
+        <div class="abs-reference">
+            <div class="abs-reference-head">5-min abs finisher — rotate each session</div>
+            <div class="abs-grid">
+                <div class="abs-item">Plank — 45–60 s holds</div>
+                <div class="abs-item">Crunches — 2–3 × 20</div>
+                <div class="abs-item">Leg raises — 2–3 × 12–15</div>
+                <div class="abs-item">Russian twist — 2 × 20</div>
+                <div class="abs-item">Bicycle crunches — 2 × 15</div>
+                <div class="abs-item">Mountain climbers — 2 × 20</div>
+            </div>
+        </div>
+
+        <!-- Key Rules -->
+        <div style="border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:1.25rem;">
+            <div
+                style="padding:10px 14px;background:var(--bg3);font-size:12px;font-weight:600;color:var(--text);border-bottom:0.5px solid var(--border)">
+                Key rules for the −3 kg target</div>
+            <div class="rules-grid">
+                <div class="rule-item">🥤 3–4 L water daily</div>
+                <div class="rule-item">🥩 High protein at every meal</div>
+                <div class="rule-item">🚫 No refined carbs after 12 PM</div>
+                <div class="rule-item">😴 7–8 hrs sleep (fat loss hormones)</div>
+                <div class="rule-item">⏱ Break fast with eggs or paneer</div>
+                <div class="rule-item">📉 Weigh in every morning, fasted</div>
+            </div>
+        </div>
+
+        <!-- Progress Tracker -->
+        <div class="progress-section">
+            <h2>Progress tracker</h2>
+            <div class="day-dots" id="dotContainer"></div>
+            <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+            </div>
+            <div class="progress-meta">
+                <span id="progressText">0 / 12 workout days done</span>
+                <span id="progressPct">0%</span>
+            </div>
+            <p style="font-size:11px;color:var(--text3);margin-top:8px">Tap a day to mark it done. Progress saves in
+                your browser.</p>
+        </div>
+
+    </main>
+
+    <footer>
+        14-Day Fat Loss Plan &nbsp;·&nbsp; Stay consistent, the results follow &nbsp;·&nbsp; Built with ♥
+    </footer>
+
+    <script>
+        function switchWeek(n) {
+            document.querySelectorAll('.wtab').forEach((t, i) => t.classList.toggle('active', i === n - 1));
+            document.querySelectorAll('.week-panel').forEach((p, i) => p.classList.toggle('active', i === n - 1));
+        }
+
+        // Day types: true = workout, false = rest/active recovery
+        const dayTypes = [
+            { label: 'M1', workout: true },
+            { label: 'T1', workout: true },
+            { label: 'W1', workout: false },
+            { label: 'T2', workout: true },
+            { label: 'F1', workout: true },
+            { label: 'S1', workout: true },
+            { label: 'Su1', workout: false },
+            { label: 'M2', workout: true },
+            { label: 'T3', workout: true },
+            { label: 'W2', workout: false },
+            { label: 'T4', workout: true },
+            { label: 'F2', workout: true },
+            { label: 'S2', workout: true },
+            { label: 'Su2', workout: false },
+        ];
+
+        const storageKey = 'fatlossPlan_v1';
+        let done = JSON.parse(localStorage.getItem(storageKey) || '[]');
+
+        const container = document.getElementById('dotContainer');
+        const fill = document.getElementById('progressFill');
+        const txt = document.getElementById('progressText');
+        const pct = document.getElementById('progressPct');
+
+        function render() {
+            container.innerHTML = '';
+            dayTypes.forEach((d, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'day-dot' + (done.includes(i) ? ' done' : '') + (!d.workout ? ' rest' : '');
+                dot.textContent = d.label;
+                dot.title = d.workout ? `Day ${i + 1} — tap to mark done` : `Day ${i + 1} — recovery`;
+                dot.onclick = () => {
+                    if (done.includes(i)) done = done.filter(x => x !== i);
+                    else done.push(i);
+                    localStorage.setItem(storageKey, JSON.stringify(done));
+                    render();
+                };
+                container.appendChild(dot);
+            });
+            const workoutDays = dayTypes.filter(d => d.workout).length;
+            const doneWorkouts = done.filter(i => dayTypes[i]?.workout).length;
+            const p = Math.round((doneWorkouts / workoutDays) * 100);
+            fill.style.width = p + '%';
+            txt.textContent = `${doneWorkouts} / ${workoutDays} workout days done`;
+            pct.textContent = p + '%';
+        }
+
+        render();
+    </script>
 </body>
+
 </html>
