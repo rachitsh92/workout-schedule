@@ -32,82 +32,68 @@
             --c-active: #BA7517;
         }
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #1a1a18;
-                --bg2: #242422;
-                --bg3: #2c2c2a;
-                --text: #e8e6de;
-                --text2: #b4b2a9;
-                --text3: #888780;
-                --border: rgba(255, 255, 255, 0.1);
-                --border2: rgba(255, 255, 255, 0.2);
-            }
+        /* ── Class-based dark mode (toggled by JS, no flash) ── */
+        html.dark {
+            --bg: #1a1a18;
+            --bg2: #242422;
+            --bg3: #2c2c2a;
+            --text: #e8e6de;
+            --text2: #b4b2a9;
+            --text3: #888780;
+            --border: rgba(255, 255, 255, 0.1);
+            --border2: rgba(255, 255, 255, 0.2);
+        }
 
-            .bh-cardio {
-                background: #04342C !important;
-                color: #9FE1CB !important;
-            }
+        html.dark .bh-cardio {
+            background: #04342C !important;
+            color: #9FE1CB !important;
+        }
 
-            .bh-strength {
-                background: #26215C !important;
-                color: #CECBF6 !important;
-            }
+        html.dark .bh-strength {
+            background: #26215C !important;
+            color: #CECBF6 !important;
+        }
 
-            .bh-abs {
-                background: #4A1B0C !important;
-                color: #F0997B !important;
-            }
+        html.dark .bh-abs {
+            background: #4A1B0C !important;
+            color: #F0997B !important;
+        }
 
-            .bh-rest {
-                background: #2C2C2A !important;
-                color: #D3D1C7 !important;
-            }
+        html.dark .bh-rest {
+            background: #2C2C2A !important;
+            color: #D3D1C7 !important;
+        }
 
-            .bh-active {
-                background: #412402 !important;
-                color: #FAC775 !important;
-            }
+        html.dark .bh-active {
+            background: #412402 !important;
+            color: #FAC775 !important;
+        }
 
-            .chip-g {
-                background: #04342C !important;
-                color: #9FE1CB !important;
-            }
+        html.dark .chip-g {
+            background: #04342C !important;
+            color: #9FE1CB !important;
+        }
 
-            .chip-p {
-                background: #26215C !important;
-                color: #CECBF6 !important;
-            }
+        html.dark .chip-p {
+            background: #26215C !important;
+            color: #CECBF6 !important;
+        }
 
-            .chip-o {
-                background: #412402 !important;
-                color: #FAC775 !important;
-            }
+        html.dark .chip-o {
+            background: #412402 !important;
+            color: #FAC775 !important;
+        }
 
-            .tag-cardio {
-                background: #04342C !important;
-                color: #9FE1CB !important;
-            }
+        html.dark .hero-stat {
+            background: #26215C !important;
+        }
 
-            .progress-bar-fill {
-                background: #1D9E75 !important;
-            }
+        html.dark .hero-stat .val {
+            color: #CECBF6 !important;
+        }
 
-            .hero-stat {
-                background: #26215C !important;
-            }
-
-            .hero-stat .val {
-                color: #CECBF6 !important;
-            }
-
-            .week-label {
-                color: #9FE1CB !important;
-            }
-
-            .if-icon {
-                background: #04342C !important;
-            }
+        html.dark .if-icon {
+            background: #04342C !important;
         }
 
         body {
@@ -116,6 +102,7 @@
             color: var(--text);
             min-height: 100vh;
             line-height: 1.5;
+            transition: background 0.2s, color 0.2s;
         }
 
         /* ── Header ── */
@@ -148,9 +135,79 @@
             border-radius: 50%;
         }
 
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
         .header-meta {
             font-size: 12px;
             color: var(--text3);
+        }
+
+        @media (max-width: 520px) {
+            .header-meta {
+                display: none;
+            }
+        }
+
+        /* ── Theme Toggle Button ── */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--bg3);
+            border: 0.5px solid var(--border2);
+            border-radius: 20px;
+            padding: 5px 11px 5px 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text2);
+            transition: background 0.2s, color 0.2s;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .theme-toggle:hover {
+            background: var(--border);
+            color: var(--text);
+        }
+
+        .toggle-track {
+            width: 28px;
+            height: 16px;
+            background: var(--border2);
+            border-radius: 8px;
+            position: relative;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+
+        .toggle-thumb {
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.2s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+        }
+
+        html.dark .toggle-track {
+            background: #534AB7;
+        }
+
+        html.dark .toggle-thumb {
+            transform: translateX(12px);
+        }
+
+        .toggle-icon {
+            font-size: 14px;
+            line-height: 1;
         }
 
         /* ── Layout ── */
@@ -245,6 +302,77 @@
         .if-text strong {
             color: var(--text);
             font-weight: 600;
+        }
+
+        /* ── Progress Section ── */
+        .progress-section {
+            background: var(--bg2);
+            border: 0.5px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .progress-section h2 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .day-dots {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .day-dot {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 0.5px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text3);
+            background: var(--bg3);
+            cursor: pointer;
+            transition: all .15s;
+            user-select: none;
+        }
+
+        .day-dot.done {
+            background: var(--c-cardio);
+            color: #fff;
+            border-color: var(--c-cardio);
+        }
+
+        .day-dot.rest {
+            border-style: dashed;
+        }
+
+        .progress-bar-wrap {
+            height: 6px;
+            background: var(--bg3);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--c-cardio);
+            border-radius: 3px;
+            transition: width .4s ease;
+        }
+
+        .progress-meta {
+            font-size: 12px;
+            color: var(--text3);
+            display: flex;
+            justify-content: space-between;
         }
 
         /* ── Legend ── */
@@ -508,8 +636,7 @@
         .abs-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0;
-            padding: 0;
+            background: var(--bg2);
         }
 
         .abs-item {
@@ -560,78 +687,6 @@
             display: block;
         }
 
-        /* ── Progress Bar (top of page) ── */
-        .progress-section {
-            background: var(--bg2);
-            border: 0.5px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 1.25rem 1.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .progress-section h2 {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .day-dots {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        .day-dot {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 0.5px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--text3);
-            background: var(--bg3);
-            cursor: pointer;
-            transition: all .15s;
-            user-select: none;
-        }
-
-        .day-dot.done {
-            background: var(--c-cardio);
-            color: #fff;
-            border-color: var(--c-cardio);
-        }
-
-        .day-dot.rest {
-            background: var(--bg3);
-            border-style: dashed;
-        }
-
-        .progress-bar-wrap {
-            height: 6px;
-            background: var(--bg3);
-            border-radius: 3px;
-            overflow: hidden;
-            margin-bottom: 8px;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            background: var(--c-cardio);
-            border-radius: 3px;
-            transition: width .4s ease;
-        }
-
-        .progress-meta {
-            font-size: 12px;
-            color: var(--text3);
-            display: flex;
-            justify-content: space-between;
-        }
-
         /* ── Footer ── */
         footer {
             text-align: center;
@@ -642,6 +697,7 @@
             margin-top: 2rem;
         }
 
+        /* ── Responsive ── */
         @media (max-width: 600px) {
             .day-grid {
                 grid-template-columns: 1fr 1fr;
@@ -671,6 +727,14 @@
                 border-right: none !important;
             }
 
+            .abs-item:nth-last-child(-n+2) {
+                border-bottom: 0.5px solid var(--border) !important;
+            }
+
+            .abs-item:last-child {
+                border-bottom: none !important;
+            }
+
             .rule-item {
                 border-bottom: 0.5px solid var(--border) !important;
             }
@@ -688,7 +752,16 @@
         <div class="logo">
             <div class="logo-dot"></div> 14-Day Fat Loss Plan
         </div>
-        <div class="header-meta">Week 1 + Week 2 · IF 6 PM–8 AM</div>
+        <div class="header-right">
+            <div class="header-meta">Week 1 + Week 2 · IF 6 PM–8 AM</div>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                <span class="toggle-icon" id="toggleIcon">🌙</span>
+                <div class="toggle-track">
+                    <div class="toggle-thumb"></div>
+                </div>
+                <span id="toggleLabel">Dark</span>
+            </button>
+        </div>
     </header>
 
     <main>
@@ -697,8 +770,7 @@
         <div class="hero">
             <div class="hero-left">
                 <h1>2-Week Cut — Target: −3 kg</h1>
-                <p> &nbsp; 9 kg already lost &nbsp;·&nbsp; Max 40–45 min sessions
-                    &nbsp;·&nbsp; IF 14:10</p>
+                <p>&nbsp; 9 kg already lost &nbsp;·&nbsp; Max 40–45 min sessions &nbsp;·&nbsp; IF 14:10</p>
             </div>
             <div class="hero-stats">
                 <div class="hero-stat">
@@ -1185,7 +1257,8 @@
         <div style="border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:1.25rem;">
             <div
                 style="padding:10px 14px;background:var(--bg3);font-size:12px;font-weight:600;color:var(--text);border-bottom:0.5px solid var(--border)">
-                Key rules for the −3 kg target</div>
+                Key rules for the −3 kg target
+            </div>
             <div class="rules-grid">
                 <div class="rule-item">🥤 3–4 L water daily</div>
                 <div class="rule-item">🥩 High protein at every meal</div>
@@ -1199,16 +1272,40 @@
     </main>
 
     <footer>
-        14-Day Fat Loss Plan &nbsp;·&nbsp; Stay consistent, the results follow &nbsp;·&nbsp; Built with calude by Rachit
+        14-Day Fat Loss Plan &nbsp;·&nbsp; Stay consistent, the results follow &nbsp;·&nbsp; Built with claude by Rachit
     </footer>
 
     <script>
+        // ── Theme toggle ──
+        const THEME_KEY = 'fatlossPlan_theme';
+        const htmlEl = document.documentElement;
+
+        function applyTheme(dark) {
+            htmlEl.classList.toggle('dark', dark);
+            document.getElementById('toggleIcon').textContent = dark ? '☀️' : '🌙';
+            document.getElementById('toggleLabel').textContent = dark ? 'Light' : 'Dark';
+        }
+
+        function toggleTheme() {
+            const isDark = htmlEl.classList.contains('dark');
+            localStorage.setItem(THEME_KEY, isDark ? 'light' : 'dark');
+            applyTheme(!isDark);
+        }
+
+        // Init: saved pref → system pref fallback
+        (function () {
+            const saved = localStorage.getItem(THEME_KEY);
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            applyTheme(saved ? saved === 'dark' : prefersDark);
+        })();
+
+        // ── Week tabs ──
         function switchWeek(n) {
             document.querySelectorAll('.wtab').forEach((t, i) => t.classList.toggle('active', i === n - 1));
             document.querySelectorAll('.week-panel').forEach((p, i) => p.classList.toggle('active', i === n - 1));
         }
 
-        // Day types: true = workout, false = rest/active recovery
+        // ── Progress tracker ──
         const dayTypes = [
             { label: 'M1', workout: true },
             { label: 'T1', workout: true },
