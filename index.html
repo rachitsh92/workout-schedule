@@ -560,13 +560,13 @@
             display: block;
         }
 
-        /* ── Progress Bar (end of page) ── */
+        /* ── Progress Bar (top of page) ── */
         .progress-section {
             background: var(--bg2);
             border: 0.5px solid var(--border);
             border-radius: var(--radius-lg);
             padding: 1.25rem 1.5rem;
-            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
         }
 
         .progress-section h2 {
@@ -697,7 +697,7 @@
         <div class="hero">
             <div class="hero-left">
                 <h1>2-Week Cut — Target: −3 kg</h1>
-                <p>Starting weight: 113 kg &nbsp;·&nbsp; 9 kg already lost &nbsp;·&nbsp; Max 40–45 min sessions
+                <p> &nbsp; 9 kg already lost &nbsp;·&nbsp; Max 40–45 min sessions
                     &nbsp;·&nbsp; IF 14:10</p>
             </div>
             <div class="hero-stats">
@@ -722,8 +722,23 @@
             <div class="if-text">
                 <strong>Intermittent Fasting — 14:10 window</strong><br>
                 Fast: 6:00 PM → 8:00 AM &nbsp;|&nbsp; Eating window: 8 AM–6 PM &nbsp;|&nbsp; Break fast with protein
-                first — eggs, paneer, or Greek yoghurt
+                first
             </div>
+        </div>
+
+        <!-- Progress Tracker -->
+        <div class="progress-section">
+            <h2>Progress tracker</h2>
+            <div class="day-dots" id="dotContainer"></div>
+            <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+            </div>
+            <div class="progress-meta">
+                <span id="progressText">0 / 12 workout days done</span>
+                <span id="progressPct">0%</span>
+            </div>
+            <p style="font-size:11px;color:var(--text3);margin-top:8px">Tap a day to mark it done. Progress saves in
+                your browser.</p>
         </div>
 
         <!-- Legend -->
@@ -1181,25 +1196,10 @@
             </div>
         </div>
 
-        <!-- Progress Tracker -->
-        <div class="progress-section">
-            <h2>Progress tracker</h2>
-            <div class="day-dots" id="dotContainer"></div>
-            <div class="progress-bar-wrap">
-                <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
-            </div>
-            <div class="progress-meta">
-                <span id="progressText">0 / 12 workout days done</span>
-                <span id="progressPct">0%</span>
-            </div>
-            <p style="font-size:11px;color:var(--text3);margin-top:8px">Tap a day to mark it done. Progress saves in
-                your browser.</p>
-        </div>
-
     </main>
 
     <footer>
-        14-Day Fat Loss Plan &nbsp;·&nbsp; Stay consistent, the results follow &nbsp;·&nbsp; Built with ♥
+        14-Day Fat Loss Plan &nbsp;·&nbsp; Stay consistent, the results follow &nbsp;·&nbsp; Built with calude by Rachit
     </footer>
 
     <script>
