@@ -22,3 +22,27 @@ TESTS TO ADD
 - Decoy flow and real flow follow the same lockout progression (same Nth failure -> 429).
 - A log-capture test: the OTP, flow_id, reset token, identifier, identityID and OTPRefID never appear in any log line, including the error paths.
 - Redis, lockout, sender and Kratos failures return 503 and do not call RecordFailure.
+
+
+---------------------------------------------------------------------
+
+FIX: ENTAUTH-2188 in-flight guard released too early (recovery_service.go)
+
+PROBLEM
+In attemptRecoveryValidationWithSender, `defer DeleteInFlight` fires when that function returns. completeRecoveryServiceSuccess (ClearAttempts, flow Delete, CreateResetToken) runs after it. So the guard is gone while the flow still exists, and a second request can acquire it, load the same flow and call VerifyOtp again. That burns a lockout attempt for the real user, or issues a second reset token if the OTP isn't single-use at the sender.
+
+FIX
+1. Move the guard's lifetime up to ValidateRecovery. Acquire it (TryConsumeFlow) right before sender.VerifyOtp, and release it with ONE defer in ValidateRecovery, so it is released only after completeRecoverySuccess has returned (flow deleted, token created) or after a failure path returns.
+2. Keep the structure: claim -> VerifyOtp -> handle failure -> completeRecoverySuccess, all inside the scope of that one defer. Do not release between VerifyOtp and completeRecoverySuccess.
+3. If the claim is not acquired, keep returning the generic 401 and do NOT call RecordFailure.
+4. Do not change RecoveryCache signatures.
+
+QUICK CHECKS (change only if they fail)
+- The in-flight key has a short TTL (e.g. 30s) so a crash cannot block a flow for long.
+- eaerror.ErrServiceUnavailable returns HTTP 503. Add one test asserting the status.
+
+TESTS
+- 10 concurrent correct-OTP requests with the same flow_id: exactly one 200, one reset token created, no RecordFailure for the losers.
+- A request arriving after VerifyOtp succeeded but before the flow is deleted does not reach VerifyOtp.
+- After a failed attempt (wrong OTP), the guard is released and a retry with the correct OTP works.
+- After a success, a second validate returns 401 (flow gone).
